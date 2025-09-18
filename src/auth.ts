@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { emailOTP, jwt /*, bearer, phoneNumber, oauth */ } from "better-auth/plugins";
-import { Pool } from "pg";
+import Database from "better-sqlite3";
 
 const {
   DATABASE_URL,
@@ -15,15 +15,11 @@ export const auth = betterAuth({
 
   trustedOrigins: [CLIENT_ORIGIN ?? "http://localhost:3000"],
 
-  database: new Pool({
-    connectionString: DATABASE_URL,
-    ssl: /supabase\.co/.test(DATABASE_URL ?? "") ? { rejectUnauthorized: false } : undefined,
-  }),
-
+  database: new Database("./auth.db"),
   // 基础：邮箱密码 + 邮箱验证
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: true,
+    requireEmailVerification: false, // 为演示目的禁用邮箱验证
     minPasswordLength: 8,
     sendResetPassword: async ({ user, url }) => {
       console.info(`[reset-password] ${user.email} -> ${url}`);

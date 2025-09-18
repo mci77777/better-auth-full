@@ -8,7 +8,7 @@
 ### B. Auth 服务代码
 - [x] 完成 `src/auth.ts`（启用 Email & Password、Email OTP、JWT）
 - [x] 完成 `src/server.ts`（Express + CORS + /healthz）
-- [ ] `npx @better-auth/cli generate && npx @better-auth/cli migrate` (此步骤将在 Docker 容器内部执行)
+- [x] `npx @better-auth/cli generate && npx @better-auth/cli migrate`
 
 ### C. 本地运行 Auth 服务与 PostgreSQL
 - [x] 确保本地 PostgreSQL 数据库运行并可访问
@@ -32,5 +32,8 @@
 - [x] 创建 `docs/VALIDATION.md`
 - [x] 补齐 README/部署说明/环境变量注释
 - [x] 预留生产域名/CORS 白名单/日志与监控方案
+
+### G. 交付
+- [x] 准备并交付 GitHub 仓库
 
 
